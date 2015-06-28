@@ -18,15 +18,7 @@ void vSensorTask(void* pvParameters)
 	xLastSampleTime = xTaskGetTickCount();
     for(;;)
     {
-        float accBuffer[3]  = {0};
-        float rateBuffer[3] = {0};
-        float magnBuffer[3] = {0};
-        vReadAcc(accBuffer);
-        vReadGyro(rateBuffer);
-        vReadMagneticField(magnBuffer);
-        g_BoardStatus.fAccelerationX = accBuffer[0];
-        g_BoardStatus.fAccelerationY = accBuffer[1];
-        g_BoardStatus.fAccelerationZ = accBuffer[2];
+
         vTaskDelayUntil(&xLastSampleTime, sensorSAMPLE_PERIOD/portTICK_PERIOD_MS);
 
     }

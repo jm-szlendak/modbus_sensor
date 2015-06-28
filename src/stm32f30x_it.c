@@ -33,13 +33,12 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 extern SemaphoreHandle_t xButtonSemaphore;
-extern SemaphoreHandle_t xTxCompletedSemaphore;
-extern SemaphoreHandle_t xRxCompletedSemaphore;
+extern SemaphoreHandle_t xFrameReceivedSemaphore;
+
 
 extern QueueHandle_t xUsartTxBuffer;
 extern QueueHandle_t xUsartRxBuffer;
-volatile portCHAR cByteToSend;
-volatile unsigned char pucRxBuffer[20];
+extern volatile modbus_frame_t xFrame;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -161,32 +160,24 @@ void EXTI0_IRQHandler(void)
 
 void USART1_IRQHandler(void){
 	long lHigherPriorityTaskWoken = pdFALSE;
-	if(USART1->ISR & USART_FLAG_RXNE){
-		USART1->ISR &= ~USART_FLAG_RXNE;
-		char ch = USART1->RDR;
-		xQueueSendFromISR(xUsartRxBuffer,&ch,&lHigherPriorityTaskWoken);
-		if(ch == TAG_DATA_END || ch==TAG_MESSAGE_END){
-            xSemaphoreGiveFromISR(xRxCompletedSemaphore, &lHigherPriorityTaskWoken);
-		}
-        portEND_SWITCHING_ISR(lHigherPriorityTaskWoken);
+	if(USART1->ISR & USART_FLAG_RXNE)
+    {
+
+        xFrame.frame[xFrame.size++]=USART1->RDR;
 	}
 
-	if(USART1->ISR & USART_FLAG_TXE){
-		USART1->ISR &= ~USART_FLAG_TXE;
+	if(USART1->ISR & USART_FLAG_TXE)
+    {
+
 		char ch;
-		if((xQueueIsQueueEmptyFromISR(xUsartTxBuffer))!=pdTRUE){
-			xQueueReceiveFromISR(xUsartTxBuffer,&ch, &lHigherPriorityTaskWoken);
-			USART1->TDR = ch ;
-		}
-		else
-		{
-			vUsartStopTx();
-			xSemaphoreGiveFromISR(xTxCompletedSemaphore, &lHigherPriorityTaskWoken);
-
-		}
-		portEND_SWITCHING_ISR(lHigherPriorityTaskWoken);
 
 	}
+	if(USART1->ISR & USART_FLAG_RTO)
+    {
+        USART1->ICR |= USART_ICR_RTOCF;
+        xSemaphoreGiveFromISR(xFrameReceivedSemaphore, &lHigherPriorityTaskWoken);
+    }
+    portEND_SWITCHING_ISR(lHigherPriorityTaskWoken);
 }
 
 /**

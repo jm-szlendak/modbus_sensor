@@ -8,9 +8,9 @@
 #include "hardware.h"
 #include "stm32f30x.h"
 #include "protocol.h"
+#include <stdlib.h>
 
-
-extern SemaphoreHandle_t xRxCompletedSemaphore;
+extern SemaphoreHandle_t xFrameReceivedSemaphore;;
 extern TaskHandle_t xUsartRxTaskHandle;
 extern QueueHandle_t xUsartRxBuffer;
 

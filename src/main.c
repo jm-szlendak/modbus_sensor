@@ -41,7 +41,7 @@ TickType_t uxBlinkRate = 333;
 SemaphoreHandle_t xButtonSemaphore = NULL;
 SemaphoreHandle_t xStatusSemaphore = NULL;
 SemaphoreHandle_t xTxCompletedSemaphore = NULL;
-SemaphoreHandle_t xRxCompletedSemaphore = NULL;
+SemaphoreHandle_t xFrameReceivedSemaphore = NULL;
 TaskHandle_t xUsartRxTaskHandle;
 TaskHandle_t xUsartTxTaskHandle;
 TaskHandle_t xLedTaskHandle;
@@ -51,27 +51,7 @@ QueueHandle_t xUsartRxBuffer;
 QueueHandle_t xTxRequest;
 unsigned long ulButtonPressCount = 0;
 
-t_BoardStatus g_BoardStatus;
-const t_DataItem g_RealTimeData[] =
-{
-    {
-        DATA_ACC_X,
-        4,
-        (unsigned char*) &g_BoardStatus.fAccelerationX
-    },
 
-    {
-        DATA_ACC_Y,
-        4,
-        (unsigned char*) &g_BoardStatus.fAccelerationY
-    },
-    {
-        DATA_ACC_Z,
-        4,
-        (unsigned char*) &g_BoardStatus.fAccelerationZ
-    },
-};
-const unsigned long g_ulNumRealTimeData = (sizeof(g_RealTimeData)/sizeof(g_RealTimeData[0]));
 
 
 int main(int argc, char* argv[])
@@ -81,9 +61,7 @@ int main(int argc, char* argv[])
 	vStartLEDBlinkTask(mainBLINK_TASK_PRIORITY);
 	vStartButtonTask(mainBUTTON_TASK_PRIORITY);
 	vStartSystemLEDTask(mainSYSTEMLED_TASK_PRIORITY);
-	vStartUsartTxTask(mainUSARTTX_TASK_PRIORITY);
 	vStartUsartRxTask(mainUSARTRX_TASK_PRIORITY);
-	vStartSensorTask(mainSENSOR_TASK_PRIORITY);
 	vTaskStartScheduler();
 
   while (1);

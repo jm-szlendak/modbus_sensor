@@ -3,26 +3,30 @@
 #define usartRxSTACK_SIZE (configMINIMAL_STACK_SIZE + 2UL )
 #define usartRxNO_WAIT 0UL
 
-rx_frame_t xRxFrame;
-
-void vStartUsartRxTask( UBaseType_t uxPriority){
-    memset(&xRxFrame,0, sizeof(xRxFrame));
-	xRxCompletedSemaphore = xSemaphoreCreateBinary();
+volatile modbus_frame_t xFrame;
+float board_status[NUMBER_OF_FIELDS];
+static void setResponse(unsigned char index)
+{
+    memcpy(&(xFrame.frame[MB_INDX_DATA]), &(board_status[index]), sizeof(float));
+}
+void vStartUsartRxTask( UBaseType_t uxPriority)
+{
+    memset(&xFrame,0, sizeof(xFrame));
+	xFrameReceivedSemaphore = xSemaphoreCreateBinary();
 	xTaskCreate(vUsartRxTask, "USART Rx", usartRxSTACK_SIZE, NULL, uxPriority, &xUsartRxTaskHandle );
 
 }
 void vUsartRxTask(void* pvParameters){ //TODO sprawdz dokladnie czy nie ma gowna
 
-	xSemaphoreTake(xRxCompletedSemaphore, usartRxNO_WAIT);
+	xSemaphoreTake(xFrameReceivedSemaphore, usartRxNO_WAIT);
 
 	for(;;)
 	{
 
-		xSemaphoreTake(xRxCompletedSemaphore, portMAX_DELAY); //Wait for semafore -> wait for frame
-		size_t i = 0;
-		if(frame[0] != DEVICE_MODBUS_ADDRESS)   //It's not addressed to us.
+		xSemaphoreTake(xFrameReceivedSemaphore, portMAX_DELAY); //Wait for semafore -> wait for frame
+		if(xFrame.frame[MB_INDX_DEV_ADDRESS] != DEVICE_MODBUS_ADDRESS)   //It's not addressed to us.
 		    continue;
-        switch(frame[1])
+        switch(xFrame.frame[MB_INDX_FUNCTION_CODE])
         {
             case MODBUS_FUNCTION_SLEEP:
             {
@@ -34,14 +38,18 @@ void vUsartRxTask(void* pvParameters){ //TODO sprawdz dokladnie czy nie ma gowna
             } break;
             case MODBUS_FUNCTION_READ_FLOAT:
             {
-                //Goodnight!
+                setResponse(xFrame.frame[MB_INDX_DATA]);
+            } break;
+            case MODBUS_FUNCTION_READ_REGISTER:
+            {
+                setResponse(xFrame.frame[MB_INDX_DATA]);
             } break;
         }
-        for(int i=0; i<xRxFrame.size, i++)
-        {
 
-        }
+
 
 	}
-
 }
+
+
+
