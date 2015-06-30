@@ -16,7 +16,7 @@ void vStartUsartRxTask( UBaseType_t uxPriority)
 	xTaskCreate(vUsartRxTask, "USART Rx", usartRxSTACK_SIZE, NULL, uxPriority, &xUsartRxTaskHandle );
 
 }
-void vUsartRxTask(void* pvParameters){ //TODO sprawdz dokladnie czy nie ma gowna
+void vUsartRxTask(void* pvParameters){
 
 	xSemaphoreTake(xFrameReceivedSemaphore, usartRxNO_WAIT);
 
@@ -46,7 +46,7 @@ void vUsartRxTask(void* pvParameters){ //TODO sprawdz dokladnie czy nie ma gowna
             } break;
         }
 
-
+        //TODO start TX here
 
 	}
 }

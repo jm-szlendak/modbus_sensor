@@ -187,6 +187,9 @@
 		<Unit filename="inc\buttonTask.h" />
 		<Unit filename="inc\delay.h" />
 		<Unit filename="inc\hardware.h" />
+		<Unit filename="inc\imu.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="inc\ledTask.h" />
 		<Unit filename="inc\protocol.h" />
 		<Unit filename="inc\sensorTask.h" />
@@ -243,6 +246,9 @@
 		<Unit filename="src\hardware.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src\imu.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src\ledTask.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -284,8 +290,8 @@
 		<Extensions>
 			<code_completion />
 			<debugger>
-				<target_debugging_settings target="Debug" active_interface="ST-link">
-					<debug_interface interface_id="ST-link" ip_address="localhost" ip_port="4242" path="${EMBLOCKS}\share\contrib" executable="STLinkGDB.exe" description=".\STM32F30x.svd" dont_start_server="false" backoff_time="1000" options="0" reg_filter="0" active_family="STMicroelectronics">
+				<target_debugging_settings target="Release" active_interface="ST-link">
+					<debug_interface interface_id="ST-link" ip_address="localhost" ip_port="4242" path="${EMBLOCKS}\share\contrib" executable="STLinkGDB.exe" description="" dont_start_server="false" backoff_time="1000" options="0" reg_filter="0" active_family="STMicroelectronics">
 						<family_options family_id="STMicroelectronics">
 							<option opt_id="ID_JTAG_SWD" opt_value="swd" />
 							<option opt_id="ID_VECTOR_START" opt_value="0x08000000" />
@@ -301,8 +307,8 @@
 						</family_options>
 					</debug_interface>
 				</target_debugging_settings>
-				<target_debugging_settings target="Release" active_interface="ST-link">
-					<debug_interface interface_id="ST-link" ip_address="localhost" ip_port="4242" path="${EMBLOCKS}\share\contrib" executable="STLinkGDB.exe" description="" dont_start_server="false" backoff_time="1000" options="0" reg_filter="0" active_family="STMicroelectronics">
+				<target_debugging_settings target="Debug" active_interface="ST-link">
+					<debug_interface interface_id="ST-link" ip_address="localhost" ip_port="4242" path="${EMBLOCKS}\share\contrib" executable="STLinkGDB.exe" description=".\STM32F30x.svd" dont_start_server="false" backoff_time="1000" options="0" reg_filter="0" active_family="STMicroelectronics">
 						<family_options family_id="STMicroelectronics">
 							<option opt_id="ID_JTAG_SWD" opt_value="swd" />
 							<option opt_id="ID_VECTOR_START" opt_value="0x08000000" />
