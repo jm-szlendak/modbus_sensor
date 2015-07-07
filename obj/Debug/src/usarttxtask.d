@@ -1,7 +1,7 @@
 obj\debug\src\usarttxtask.o: src\usartTxTask.c inc/usartTxTask.h \
  inc\RTOS/FreeRTOS.h inc/FreeRTOSConfig.h inc\RTOS/projdefs.h \
  inc\RTOS/portable.h inc\RTOS/portmacro.h inc\RTOS/mpu_wrappers.h \
- inc\RTOS/task.h inc\RTOS/list.h inc\RTOS/semphr.h inc\RTOS/queue.h \
+ inc\RTOS/semphr.h inc\RTOS/queue.h inc\RTOS/task.h inc\RTOS/list.h \
  inc/hardware.h inc/stm32f30x.h cmsis/core_cm4.h cmsis/core_cmInstr.h \
  cmsis/core_cmFunc.h cmsis/core_cm4_simd.h inc/system_stm32f30x.h \
  inc/stm32f30x_conf.h SPL\inc/stm32f30x_adc.h inc/stm32f30x.h \

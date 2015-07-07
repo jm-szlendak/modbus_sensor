@@ -10,9 +10,11 @@
 #include "protocol.h"
 #include <stdlib.h>
 
-extern SemaphoreHandle_t xFrameReceivedSemaphore;;
+extern SemaphoreHandle_t xFrameReceivedSemaphore;
+extern SemaphoreHandle_t xDataReadySemaphore;
 extern TaskHandle_t xUsartRxTaskHandle;
-extern QueueHandle_t xUsartRxBuffer;
+
+extern float board_status[NUMBER_OF_FIELDS];
 
 void vStartUsartRxTask( UBaseType_t uxPriority);
 void vUsartRxTask(void* pvParameters);

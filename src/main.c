@@ -42,6 +42,7 @@ SemaphoreHandle_t xButtonSemaphore = NULL;
 SemaphoreHandle_t xStatusSemaphore = NULL;
 SemaphoreHandle_t xTxCompletedSemaphore = NULL;
 SemaphoreHandle_t xFrameReceivedSemaphore = NULL;
+SemaphoreHandle_t xDataReadySemaphore = NULL;
 TaskHandle_t xUsartRxTaskHandle;
 TaskHandle_t xUsartTxTaskHandle;
 TaskHandle_t xLedTaskHandle;
@@ -57,11 +58,6 @@ float board_status[NUMBER_OF_FIELDS];
 int main(int argc, char* argv[])
 {
 	vhHardwareSetup();
-
-	float gyro[3];
-	imuReadAngularRate(gyro);
-	float magne[3];
-	imuReadMagneticField(magne);
 
 	vStartLEDBlinkTask(mainBLINK_TASK_PRIORITY);
 	vStartButtonTask(mainBUTTON_TASK_PRIORITY);

@@ -10,12 +10,13 @@
 
 
 #include "FreeRTOS.h"
-#include "task.h"
 #include "semphr.h"
+#include "task.h"
 #include "hardware.h"
 #include "stm32f30x.h"
 #include "protocol.h"
 
+extern SemaphoreHandle_t xDataReadySemaphore;
 extern SemaphoreHandle_t xTxCompletedSemaphore;
 extern TaskHandle_t xUsartTxTaskHandle;
 extern QueueHandle_t xUsartTxBuffer;

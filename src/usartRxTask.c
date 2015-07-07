@@ -1,10 +1,11 @@
 #include "usartRxTask.h"
 
 #define usartRxSTACK_SIZE (configMINIMAL_STACK_SIZE + 2UL )
+#define usartRxMAX_DATA_WAIT (100)
 #define usartRxNO_WAIT 0UL
 
 volatile modbus_frame_t xFrame;
-extern float board_status[NUMBER_OF_FIELDS];
+
 static void setResponse(unsigned char index)
 {
     memcpy(&(xFrame.frame[MB_INDX_DATA]), &(board_status[index]), sizeof(float));
@@ -22,8 +23,8 @@ void vUsartRxTask(void* pvParameters){
 
 	for(;;)
 	{
-
-		xSemaphoreTake(xFrameReceivedSemaphore, portMAX_DELAY); //Wait for semafore -> wait for frame
+        /// Wait for semafore. It will be given when frame arrives.
+		xSemaphoreTake(xFrameReceivedSemaphore, portMAX_DELAY);
 		if(xFrame.frame[MB_INDX_DEV_ADDRESS] != DEVICE_MODBUS_ADDRESS)   //It's not addressed to us.
 		    continue;
         switch(xFrame.frame[MB_INDX_FUNCTION_CODE])
@@ -38,7 +39,21 @@ void vUsartRxTask(void* pvParameters){
             } break;
             case MODBUS_FUNCTION_READ_FLOAT:
             {
-                setResponse(xFrame.frame[MB_INDX_DATA]);
+                /// Try to obtain mutex. Don't wait forever.
+                if(xSemaphoreTake(xDataReadySemaphore, usartRxMAX_DATA_WAIT/portTICK_PERIOD_MS) == pdTRUE)
+                {
+                    /// Prepare command response
+                    setResponse(xFrame.frame[MB_INDX_DATA]);
+
+                    /// Give mutex back
+                    xSemaphoreGive(xDataReadySemaphore);
+                }
+                else
+                {
+                    /**< TODO: deal with it */
+                }
+
+
             } break;
             case MODBUS_FUNCTION_READ_REGISTER:
             {

@@ -39,6 +39,7 @@ extern SemaphoreHandle_t xFrameReceivedSemaphore;
 extern QueueHandle_t xUsartTxBuffer;
 extern QueueHandle_t xUsartRxBuffer;
 extern volatile modbus_frame_t xFrame;
+extern volatile char txBuffer[50];
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -168,7 +169,6 @@ void USART1_IRQHandler(void){
 
 	if(USART1->ISR & USART_FLAG_TXE)
     {
-
 		char ch;
 
 	}

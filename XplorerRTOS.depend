@@ -894,7 +894,7 @@
 	"task.h"
 	"hardware.h"
 
-1436299736 source:e:\workspace\stm32\modbussensor\src\main.c
+1436307393 source:e:\workspace\stm32\modbussensor\src\main.c
 	<stdio.h>
 	"FreeRTOS.h"
 	"task.h"
@@ -917,15 +917,15 @@
 	"hardware.h"
 	"stm32f30x.h"
 
-1425207849 e:\workspace\stm32\modbussensor\inc\usarttxtask.h
+1436307384 e:\workspace\stm32\modbussensor\inc\usarttxtask.h
 	"FreeRTOS.h"
-	"task.h"
 	"semphr.h"
+	"task.h"
 	"hardware.h"
 	"stm32f30x.h"
 	"protocol.h"
 
-1425140776 e:\workspace\stm32\modbussensor\src\sensortask.h
+1436307418 e:\workspace\stm32\modbussensor\src\sensortask.h
 	"FreeRTOS.h"
 	"task.h"
 	"semphr.h"
@@ -940,7 +940,7 @@
 
 1423412361 source:e:\workspace\stm32\modbussensor\src\startup_stm32f30x.s
 
-1435536868 source:e:\workspace\stm32\modbussensor\src\stm32f30x_it.c
+1436307384 source:e:\workspace\stm32\modbussensor\src\stm32f30x_it.c
 	"stm32f30x_it.h"
 
 1425207849 e:\workspace\stm32\modbussensor\inc\stm32f30x_it.h
@@ -972,10 +972,10 @@
 1434658633 source:e:\workspace\stm32\modbussensor\src\usarttxtask.c
 	"usartTxTask.h"
 
-1436296242 source:e:\workspace\stm32\modbussensor\src\usartrxtask.c
+1436307384 source:e:\workspace\stm32\modbussensor\src\usartrxtask.c
 	"usartRxTask.h"
 
-1435535358 e:\workspace\stm32\modbussensor\inc\usartrxtask.h
+1436306422 e:\workspace\stm32\modbussensor\inc\usartrxtask.h
 	"FreeRTOS.h"
 	"task.h"
 	"semphr.h"
