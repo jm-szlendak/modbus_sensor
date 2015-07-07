@@ -7,6 +7,7 @@
 
 #include "hardware.h"
 #include "stm32f30x_usart.h"
+#include "imu.h"
 
 
 void vhHardwareSetup(void){
@@ -57,9 +58,8 @@ void vhHardwareSetup(void){
 	NVIC_SetPriority(USART1_IRQn,NVIC_EncodePriority(NVIC_PriorityGroup_4,0x0F,0x0F)); //??
 	NVIC_EnableIRQ(USART1_IRQn);
 
-	vAcc_Config();
-	vGyro_Config();
-	vMagnetometer_Config();
+    imuHardwareSetup();
+
 
 
 

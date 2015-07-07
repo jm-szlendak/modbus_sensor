@@ -50,13 +50,18 @@ QueueHandle_t xUsartTxBuffer;
 QueueHandle_t xUsartRxBuffer;
 QueueHandle_t xTxRequest;
 unsigned long ulButtonPressCount = 0;
-
+float board_status[NUMBER_OF_FIELDS];
 
 
 
 int main(int argc, char* argv[])
 {
 	vhHardwareSetup();
+
+	float gyro[3];
+	imuReadAngularRate(gyro);
+	float magne[3];
+	imuReadMagneticField(magne);
 
 	vStartLEDBlinkTask(mainBLINK_TASK_PRIORITY);
 	vStartButtonTask(mainBUTTON_TASK_PRIORITY);

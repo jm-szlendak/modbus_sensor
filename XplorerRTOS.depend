@@ -862,7 +862,7 @@
 1420740084 e:\workspace\stm32\modbussensor\inc\rtos\semphr.h
 	"queue.h"
 
-1425141357 e:\workspace\stm32\modbussensor\inc\hardware.h
+1436291227 e:\workspace\stm32\modbussensor\inc\hardware.h
 	"stm32f30x.h"
 	"stm32f30x_misc.h"
 	"stm32f30x_syscfg.h"
@@ -870,6 +870,7 @@
 	"RCC.h"
 	"stm32f3_discovery_l3gd20.h"
 	"stm32f3_discovery_lsm303dlhc.h"
+	"imu.h"
 
 1348675266 e:\workspace\stm32\modbussensor\inc\stm32f3_discovery_l3gd20.h
 	"stm32f30x.h"
@@ -880,9 +881,10 @@
 1418921767 source:e:\workspace\stm32\modbussensor\src\delay.c
 	"delay.h"
 
-1435535245 source:e:\workspace\stm32\modbussensor\src\hardware.c
+1436299676 source:e:\workspace\stm32\modbussensor\src\hardware.c
 	"hardware.h"
 	"stm32f30x_usart.h"
+	"imu.h"
 
 1420909138 source:e:\workspace\stm32\modbussensor\src\ledtask.c
 	"ledTask.h"
@@ -892,7 +894,7 @@
 	"task.h"
 	"hardware.h"
 
-1435535594 source:e:\workspace\stm32\modbussensor\src\main.c
+1436299736 source:e:\workspace\stm32\modbussensor\src\main.c
 	<stdio.h>
 	"FreeRTOS.h"
 	"task.h"
@@ -906,7 +908,7 @@
 	"usartTxTask.h"
 	"sensorTask.h"
 
-1435535439 e:\workspace\stm32\modbussensor\inc\protocol.h
+1436292624 e:\workspace\stm32\modbussensor\inc\protocol.h
 
 1421266048 e:\workspace\stm32\modbussensor\inc\systemledtask.h
 	"FreeRTOS.h"
@@ -933,7 +935,7 @@
 	"stm32f3_discovery_l3gd20.h"
 	"stm32f3_discovery_lsm303dlhc.h"
 
-1435535267 source:e:\workspace\stm32\modbussensor\src\sensortask.c
+1436299961 source:e:\workspace\stm32\modbussensor\src\sensortask.c
 	"sensorTask.h"
 
 1423412361 source:e:\workspace\stm32\modbussensor\src\startup_stm32f30x.s
@@ -955,7 +957,7 @@
 1348675266 e:\workspace\stm32\modbussensor\inc\stm32f3_discovery.h
 	"stm32f30x.h"
 
-1348675266 source:e:\workspace\stm32\modbussensor\src\stm32f3_discovery_l3gd20.c
+1436299616 source:e:\workspace\stm32\modbussensor\src\stm32f3_discovery_l3gd20.c
 	"stm32f3_discovery_l3gd20.h"
 
 1348675266 source:e:\workspace\stm32\modbussensor\src\stm32f3_discovery_lsm303dlhc.c
@@ -970,7 +972,7 @@
 1434658633 source:e:\workspace\stm32\modbussensor\src\usarttxtask.c
 	"usartTxTask.h"
 
-1435537239 source:e:\workspace\stm32\modbussensor\src\usartrxtask.c
+1436296242 source:e:\workspace\stm32\modbussensor\src\usartrxtask.c
 	"usartRxTask.h"
 
 1435535358 e:\workspace\stm32\modbussensor\inc\usartrxtask.h
@@ -981,4 +983,14 @@
 	"stm32f30x.h"
 	"protocol.h"
 	<stdlib.h>
+
+1436299611 e:\workspace\stm32\modbussensor\inc\imu.h
+	"stm32f3_discovery_l3gd20.h"
+	"stm32f3_discovery_lsm303dlhc.h"
+	"stm32f30x_gpio.h"
+	"stm32f30x_rcc.h"
+	"stm32f30x_i2c.h"
+
+1436299948 source:e:\workspace\stm32\modbussensor\src\imu.c
+	"imu.h"
 

@@ -13,6 +13,6 @@ obj\debug\src\stm32f30x_it.o: src\stm32f30x_it.c inc/stm32f30x_it.h \
  SPL\inc/stm32f30x_usart.h SPL\inc/stm32f30x_wwdg.h \
  SPL\inc/stm32f30x_misc.h inc/hardware.h inc/GPIO.h inc/RCC.h \
  inc/stm32f3_discovery_l3gd20.h inc/stm32f3_discovery_lsm303dlhc.h \
- inc\RTOS/FreeRTOS.h inc/FreeRTOSConfig.h inc\RTOS/projdefs.h \
+ inc/imu.h inc\RTOS/FreeRTOS.h inc/FreeRTOSConfig.h inc\RTOS/projdefs.h \
  inc\RTOS/portable.h inc\RTOS/portmacro.h inc\RTOS/mpu_wrappers.h \
  inc\RTOS/semphr.h inc\RTOS/queue.h inc/protocol.h

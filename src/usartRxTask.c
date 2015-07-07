@@ -4,7 +4,7 @@
 #define usartRxNO_WAIT 0UL
 
 volatile modbus_frame_t xFrame;
-float board_status[NUMBER_OF_FIELDS];
+extern float board_status[NUMBER_OF_FIELDS];
 static void setResponse(unsigned char index)
 {
     memcpy(&(xFrame.frame[MB_INDX_DATA]), &(board_status[index]), sizeof(float));

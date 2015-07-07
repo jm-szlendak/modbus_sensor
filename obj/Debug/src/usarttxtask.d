@@ -16,4 +16,4 @@ obj\debug\src\usarttxtask.o: src\usartTxTask.c inc/usartTxTask.h \
  SPL\inc/stm32f30x_usart.h SPL\inc/stm32f30x_wwdg.h \
  SPL\inc/stm32f30x_misc.h inc/GPIO.h inc/RCC.h \
  inc/stm32f3_discovery_l3gd20.h inc/stm32f3_discovery_lsm303dlhc.h \
- inc/protocol.h
+ inc/imu.h inc/protocol.h

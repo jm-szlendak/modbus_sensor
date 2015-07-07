@@ -6,7 +6,7 @@
 #define sensorNO_WAIT 0UL
 #define sensorSAMPLE_PERIOD 100UL
 
-
+extern float board_status[NUMBER_OF_FIELDS];
 
 void vStartSensorTask( UBaseType_t uxPriority)
 {
@@ -19,6 +19,9 @@ void vSensorTask(void* pvParameters)
     for(;;)
     {
 
+        taskENTER_CRITICAL();
+        imuReadAcceleration(&(board_status[ACCELERATION_X]));
+        taskEXIT_CRITICAL();
         vTaskDelayUntil(&xLastSampleTime, sensorSAMPLE_PERIOD/portTICK_PERIOD_MS);
 
     }

@@ -16,6 +16,6 @@ obj\debug\src\main.o: src\main.c inc\RTOS/FreeRTOS.h inc/FreeRTOSConfig.h \
  SPL\inc/stm32f30x_tim.h SPL\inc/stm32f30x_usart.h \
  SPL\inc/stm32f30x_wwdg.h SPL\inc/stm32f30x_misc.h inc/GPIO.h inc/RCC.h \
  inc/stm32f3_discovery_l3gd20.h inc/stm32f3_discovery_lsm303dlhc.h \
- inc/ledTask.h inc/hardware.h inc/buttonTask.h inc/systemLedTask.h \
- inc/usartTxTask.h inc/protocol.h src\sensorTask.h \
+ inc/imu.h inc/ledTask.h inc/hardware.h inc/buttonTask.h \
+ inc/systemLedTask.h inc/usartTxTask.h inc/protocol.h src\sensorTask.h \
  inc/stm32f3_discovery_l3gd20.h inc/stm32f3_discovery_lsm303dlhc.h

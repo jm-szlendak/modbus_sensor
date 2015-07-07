@@ -17,8 +17,8 @@
   *
   *        http://www.st.com/software_license_agreement_liberty_v2
   *
-  * Unless required by applicable law or agreed to in writing, software 
-  * distributed under the License is distributed on an "AS IS" BASIS, 
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   * See the License for the specific language governing permissions and
   * limitations under the License.
@@ -30,11 +30,11 @@
 
 /** @addtogroup Utilities
   * @{
-  */ 
+  */
 
 /** @addtogroup STM32F3_DISCOVERY
   * @{
-  */ 
+  */
 
 /** @addtogroup STM32F3_DISCOVERY_L3GD20
   * @{
@@ -63,12 +63,12 @@
 
 /**
   * @}
-  */ 
-  
+  */
+
 /** @defgroup STM32F3_DISCOVERY_L3GD20_Private_Variables
   * @{
-  */ 
-__IO uint32_t  L3GD20Timeout = L3GD20_FLAG_TIMEOUT;  
+  */
+__IO uint32_t  L3GD20Timeout = L3GD20_FLAG_TIMEOUT;
 /**
   * @}
   */
@@ -76,7 +76,7 @@ __IO uint32_t  L3GD20Timeout = L3GD20_FLAG_TIMEOUT;
 /** @defgroup STM32F3_DISCOVERY_L3GD20_Private_FunctionPrototypes
   * @{
   */
-static uint8_t L3GD20_SendByte(uint8_t byte);
+static uint8_t l3gd20SendByte(uint8_t byte);
 static void L3GD20_LowLevel_Init(void);
 /**
   * @}
@@ -88,27 +88,27 @@ static void L3GD20_LowLevel_Init(void);
 
 /**
   * @brief  Set L3GD20 Initialization.
-  * @param  L3GD20_InitStruct: pointer to a L3GD20_InitTypeDef structure 
+  * @param  L3GD20_InitStruct: pointer to a L3GD20_InitTypeDef structure
   *         that contains the configuration setting for the L3GD20.
   * @retval None
   */
 void L3GD20_Init(L3GD20_InitTypeDef *L3GD20_InitStruct)
-{  
+{
   uint8_t ctrl1 = 0x00, ctrl4 = 0x00;
-  
+
   /* Configure the low level interface ---------------------------------------*/
   L3GD20_LowLevel_Init();
-  
+
   /* Configure MEMS: data rate, power mode, full scale and axes */
   ctrl1 |= (uint8_t) (L3GD20_InitStruct->Power_Mode | L3GD20_InitStruct->Output_DataRate | \
                     L3GD20_InitStruct->Axes_Enable | L3GD20_InitStruct->Band_Width);
-  
+
   ctrl4 |= (uint8_t) (L3GD20_InitStruct->BlockData_Update | L3GD20_InitStruct->Endianness | \
                     L3GD20_InitStruct->Full_Scale);
-                    
+
   /* Write value to MEMS CTRL_REG1 regsister */
   L3GD20_Write(&ctrl1, L3GD20_CTRL_REG1_ADDR, 1);
-  
+
   /* Write value to MEMS CTRL_REG4 regsister */
   L3GD20_Write(&ctrl4, L3GD20_CTRL_REG4_ADDR, 1);
 }
@@ -121,112 +121,112 @@ void L3GD20_Init(L3GD20_InitTypeDef *L3GD20_InitStruct)
 void L3GD20_RebootCmd(void)
 {
   uint8_t tmpreg;
-  
+
   /* Read CTRL_REG5 register */
   L3GD20_Read(&tmpreg, L3GD20_CTRL_REG5_ADDR, 1);
-  
+
   /* Enable or Disable the reboot memory */
   tmpreg |= L3GD20_BOOT_REBOOTMEMORY;
-  
+
   /* Write value to MEMS CTRL_REG5 regsister */
   L3GD20_Write(&tmpreg, L3GD20_CTRL_REG5_ADDR, 1);
 }
 
 /**
   * @brief Set L3GD20 Interrupt configuration
-  * @param  L3GD20_InterruptConfig_TypeDef: pointer to a L3GD20_InterruptConfig_TypeDef 
+  * @param  L3GD20_InterruptConfig_TypeDef: pointer to a L3GD20_InterruptConfig_TypeDef
   *         structure that contains the configuration setting for the L3GD20 Interrupt.
   * @retval None
   */
 void L3GD20_INT1InterruptConfig(L3GD20_InterruptConfigTypeDef *L3GD20_IntConfigStruct)
 {
   uint8_t ctrl_cfr = 0x00, ctrl3 = 0x00;
-  
+
   /* Read INT1_CFG register */
   L3GD20_Read(&ctrl_cfr, L3GD20_INT1_CFG_ADDR, 1);
-  
+
   /* Read CTRL_REG3 register */
   L3GD20_Read(&ctrl3, L3GD20_CTRL_REG3_ADDR, 1);
-  
+
   ctrl_cfr &= 0x80;
-  
+
   ctrl3 &= 0xDF;
-  
-  /* Configure latch Interrupt request and axe interrupts */                   
+
+  /* Configure latch Interrupt request and axe interrupts */
   ctrl_cfr |= (uint8_t)(L3GD20_IntConfigStruct->Latch_Request| \
                    L3GD20_IntConfigStruct->Interrupt_Axes);
-                   
+
   ctrl3 |= (uint8_t)(L3GD20_IntConfigStruct->Interrupt_ActiveEdge);
-  
+
   /* Write value to MEMS INT1_CFG register */
   L3GD20_Write(&ctrl_cfr, L3GD20_INT1_CFG_ADDR, 1);
-  
+
   /* Write value to MEMS CTRL_REG3 register */
   L3GD20_Write(&ctrl3, L3GD20_CTRL_REG3_ADDR, 1);
 }
 
 /**
   * @brief  Enable or disable INT1 interrupt
-  * @param  InterruptState: State of INT1 Interrupt 
-  *      This parameter can be: 
+  * @param  InterruptState: State of INT1 Interrupt
+  *      This parameter can be:
   *        @arg L3GD20_INT1INTERRUPT_DISABLE
-  *        @arg L3GD20_INT1INTERRUPT_ENABLE    
+  *        @arg L3GD20_INT1INTERRUPT_ENABLE
   * @retval None
   */
 void L3GD20_INT1InterruptCmd(uint8_t InterruptState)
-{  
+{
   uint8_t tmpreg;
-  
+
   /* Read CTRL_REG3 register */
   L3GD20_Read(&tmpreg, L3GD20_CTRL_REG3_ADDR, 1);
-                  
-  tmpreg &= 0x7F;	
+
+  tmpreg &= 0x7F;
   tmpreg |= InterruptState;
-  
+
   /* Write value to MEMS CTRL_REG3 regsister */
   L3GD20_Write(&tmpreg, L3GD20_CTRL_REG3_ADDR, 1);
 }
 
 /**
   * @brief  Enable or disable INT2 interrupt
-  * @param  InterruptState: State of INT1 Interrupt 
-  *      This parameter can be: 
+  * @param  InterruptState: State of INT1 Interrupt
+  *      This parameter can be:
   *        @arg L3GD20_INT2INTERRUPT_DISABLE
-  *        @arg L3GD20_INT2INTERRUPT_ENABLE    
+  *        @arg L3GD20_INT2INTERRUPT_ENABLE
   * @retval None
   */
 void L3GD20_INT2InterruptCmd(uint8_t InterruptState)
-{  
+{
   uint8_t tmpreg;
-  
+
   /* Read CTRL_REG3 register */
   L3GD20_Read(&tmpreg, L3GD20_CTRL_REG3_ADDR, 1);
-                  
-  tmpreg &= 0xF7;	
+
+  tmpreg &= 0xF7;
   tmpreg |= InterruptState;
-  
+
   /* Write value to MEMS CTRL_REG3 regsister */
   L3GD20_Write(&tmpreg, L3GD20_CTRL_REG3_ADDR, 1);
 }
 
 /**
   * @brief  Set High Pass Filter Modality
-  * @param  L3GD20_FilterStruct: pointer to a L3GD20_FilterConfigTypeDef structure 
-  *         that contains the configuration setting for the L3GD20.        
+  * @param  L3GD20_FilterStruct: pointer to a L3GD20_FilterConfigTypeDef structure
+  *         that contains the configuration setting for the L3GD20.
   * @retval None
   */
-void L3GD20_FilterConfig(L3GD20_FilterConfigTypeDef *L3GD20_FilterStruct) 
+void L3GD20_FilterConfig(L3GD20_FilterConfigTypeDef *L3GD20_FilterStruct)
 {
   uint8_t tmpreg;
-  
+
   /* Read CTRL_REG2 register */
   L3GD20_Read(&tmpreg, L3GD20_CTRL_REG2_ADDR, 1);
-  
+
   tmpreg &= 0xC0;
-  
+
   /* Configure MEMS: mode and cutoff frquency */
   tmpreg |= (uint8_t) (L3GD20_FilterStruct->HighPassFilter_Mode_Selection |\
-                      L3GD20_FilterStruct->HighPassFilter_CutOff_Frequency);                             
+                      L3GD20_FilterStruct->HighPassFilter_CutOff_Frequency);
 
   /* Write value to MEMS CTRL_REG2 regsister */
   L3GD20_Write(&tmpreg, L3GD20_CTRL_REG2_ADDR, 1);
@@ -235,18 +235,18 @@ void L3GD20_FilterConfig(L3GD20_FilterConfigTypeDef *L3GD20_FilterStruct)
 /**
   * @brief  Enable or Disable High Pass Filter
   * @param  HighPassFilterState: new state of the High Pass Filter feature.
-  *      This parameter can be: 
-  *         @arg: L3GD20_HIGHPASSFILTER_DISABLE 
-  *         @arg: L3GD20_HIGHPASSFILTER_ENABLE          
+  *      This parameter can be:
+  *         @arg: L3GD20_HIGHPASSFILTER_DISABLE
+  *         @arg: L3GD20_HIGHPASSFILTER_ENABLE
   * @retval None
   */
 void L3GD20_FilterCmd(uint8_t HighPassFilterState)
  {
   uint8_t tmpreg;
-  
+
   /* Read CTRL_REG5 register */
   L3GD20_Read(&tmpreg, L3GD20_CTRL_REG5_ADDR, 1);
-                  
+
   tmpreg &= 0xEF;
 
   tmpreg |= HighPassFilterState;
@@ -257,16 +257,16 @@ void L3GD20_FilterCmd(uint8_t HighPassFilterState)
 
 /**
   * @brief  Get status for L3GD20 data
-  * @param  None         
+  * @param  None
   * @retval Data status in a L3GD20 Data
   */
 uint8_t L3GD20_GetDataStatus(void)
 {
   uint8_t tmpreg;
-  
+
   /* Read STATUS_REG register */
   L3GD20_Read(&tmpreg, L3GD20_STATUS_REG_ADDR, 1);
-                  
+
   return tmpreg;
 }
 
@@ -279,7 +279,7 @@ uint8_t L3GD20_GetDataStatus(void)
   */
 void L3GD20_Write(uint8_t* pBuffer, uint8_t WriteAddr, uint16_t NumByteToWrite)
 {
-  /* Configure the MS bit: 
+  /* Configure the MS bit:
        - When 0, the address will remain unchanged in multiple read/write commands.
        - When 1, the address will be auto incremented in multiple read/write commands.
   */
@@ -289,18 +289,18 @@ void L3GD20_Write(uint8_t* pBuffer, uint8_t WriteAddr, uint16_t NumByteToWrite)
   }
   /* Set chip select Low at the start of the transmission */
   L3GD20_CS_LOW();
-  
+
   /* Send the Address of the indexed register */
-  L3GD20_SendByte(WriteAddr);
+  l3gd20SendByte(WriteAddr);
   /* Send the data that will be written into the device (MSB First) */
   while(NumByteToWrite >= 0x01)
   {
-    L3GD20_SendByte(*pBuffer);
+    l3gd20SendByte(*pBuffer);
     NumByteToWrite--;
     pBuffer++;
   }
-  
-  /* Set chip select High at the end of the transmission */ 
+
+  /* Set chip select High at the end of the transmission */
   L3GD20_CS_HIGH();
 }
 
@@ -312,7 +312,7 @@ void L3GD20_Write(uint8_t* pBuffer, uint8_t WriteAddr, uint16_t NumByteToWrite)
   * @retval None
   */
 void L3GD20_Read(uint8_t* pBuffer, uint8_t ReadAddr, uint16_t NumByteToRead)
-{  
+{
   if(NumByteToRead > 0x01)
   {
     ReadAddr |= (uint8_t)(READWRITE_CMD | MULTIPLEBYTE_CMD);
@@ -323,22 +323,22 @@ void L3GD20_Read(uint8_t* pBuffer, uint8_t ReadAddr, uint16_t NumByteToRead)
   }
   /* Set chip select Low at the start of the transmission */
   L3GD20_CS_LOW();
-  
+
   /* Send the Address of the indexed register */
-  L3GD20_SendByte(ReadAddr);
-  
+  l3gd20SendByte(ReadAddr);
+
   /* Receive the data that will be read from the device (MSB First) */
   while(NumByteToRead > 0x00)
   {
     /* Send dummy byte (0x00) to generate the SPI clock to L3GD20 (Slave device) */
-    *pBuffer = L3GD20_SendByte(DUMMY_BYTE);
+    *pBuffer = l3gd20SendByte(DUMMY_BYTE);
     NumByteToRead--;
     pBuffer++;
   }
-  
-  /* Set chip select High at the end of the transmission */ 
+
+  /* Set chip select High at the end of the transmission */
   L3GD20_CS_HIGH();
-}  
+}
 /**
   * @brief  Initializes the low level interface used to drive the L3GD20
   * @param  None
@@ -357,10 +357,10 @@ static void L3GD20_LowLevel_Init(void)
 
   /* Enable CS  GPIO clock */
   RCC_AHBPeriphClockCmd(L3GD20_SPI_CS_GPIO_CLK, ENABLE);
-  
+
   /* Enable INT1 GPIO clock */
   RCC_AHBPeriphClockCmd(L3GD20_SPI_INT1_GPIO_CLK, ENABLE);
-  
+
   /* Enable INT2 GPIO clock */
   RCC_AHBPeriphClockCmd(L3GD20_SPI_INT2_GPIO_CLK, ENABLE);
 
@@ -412,7 +412,7 @@ static void L3GD20_LowLevel_Init(void)
 
   /* Deselect : Chip Select high */
   GPIO_SetBits(L3GD20_SPI_CS_GPIO_PORT, L3GD20_SPI_CS_PIN);
-  
+
   /* Configure GPIO PINs to detect Interrupts */
   GPIO_InitStructure.GPIO_Pin = L3GD20_SPI_INT1_PIN;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
@@ -420,18 +420,18 @@ static void L3GD20_LowLevel_Init(void)
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
   GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;
   GPIO_Init(L3GD20_SPI_INT1_GPIO_PORT, &GPIO_InitStructure);
-  
+
   GPIO_InitStructure.GPIO_Pin = L3GD20_SPI_INT2_PIN;
   GPIO_Init(L3GD20_SPI_INT2_GPIO_PORT, &GPIO_InitStructure);
-}  
+}
 
 /**
-  * @brief  Sends a Byte through the SPI interface and return the Byte received 
+  * @brief  Sends a Byte through the SPI interface and return the Byte received
   *         from the SPI bus.
   * @param  Byte : Byte send.
   * @retval The received byte value
   */
-static uint8_t L3GD20_SendByte(uint8_t byte)
+static uint8_t l3gd20SendByte(uint8_t byte)
 {
   /* Loop while DR register in not empty */
   L3GD20Timeout = L3GD20_FLAG_TIMEOUT;
@@ -439,17 +439,17 @@ static uint8_t L3GD20_SendByte(uint8_t byte)
   {
     if((L3GD20Timeout--) == 0) return L3GD20_TIMEOUT_UserCallback();
   }
-  
+
   /* Send a Byte through the SPI peripheral */
   SPI_SendData8(L3GD20_SPI, byte);
-  
+
   /* Wait to receive a Byte */
   L3GD20Timeout = L3GD20_FLAG_TIMEOUT;
   while (SPI_I2S_GetFlagStatus(L3GD20_SPI, SPI_I2S_FLAG_RXNE) == RESET)
   {
     if((L3GD20Timeout--) == 0) return L3GD20_TIMEOUT_UserCallback();
   }
-  
+
   /* Return the Byte read from the SPI bus */
   return (uint8_t)SPI_ReceiveData8(L3GD20_SPI);
 }
@@ -464,26 +464,26 @@ uint32_t L3GD20_TIMEOUT_UserCallback(void)
 {
   /* Block communication and all processes */
   while (1)
-  {   
+  {
   }
 }
 #endif /* USE_DEFAULT_TIMEOUT_CALLBACK */
 
 /**
   * @}
-  */ 
+  */
 
 /**
   * @}
-  */ 
-  
-/**
-  * @}
-  */ 
+  */
 
 /**
   * @}
-  */ 
-  
+  */
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/     
+/**
+  * @}
+  */
+
+
+/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -16,5 +16,5 @@ obj\debug\src\sensortask.o: src\sensorTask.c src\sensorTask.h \
  SPL\inc/stm32f30x_usart.h SPL\inc/stm32f30x_wwdg.h \
  SPL\inc/stm32f30x_misc.h inc/GPIO.h inc/RCC.h \
  inc/stm32f3_discovery_l3gd20.h inc/stm32f3_discovery_lsm303dlhc.h \
- inc/protocol.h inc/stm32f3_discovery_l3gd20.h \
+ inc/imu.h inc/protocol.h inc/stm32f3_discovery_l3gd20.h \
  inc/stm32f3_discovery_lsm303dlhc.h
