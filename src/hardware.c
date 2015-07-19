@@ -41,11 +41,12 @@ void vhHardwareSetup(void){
 
 	USART1->BRR = 72000000/115200;
 	USART1->CR1 &= ~USART_CR1_OVER8;
-	USART1->CR1 |= USART_CR1_PCE;
+	//USART1->CR1 |= USART_CR1_PCE;
+	//USART1->CR1 |= USART_CR1_M;
 
 	USART1->CR2 |= USART_CR2_RTOEN;
 	USART1->RTOR =(uint32_t)(22) & USART_RTOR_RTO;
-	USART1->CR1 |= USART_CR1_TE;
+	//USART1->CR1 |= USART_CR1_TE;
 	USART1->CR1 |= USART_CR1_RE;
 	USART1->CR1 |= USART_CR1_UE;
 
@@ -69,10 +70,12 @@ void vhToggleLED(GPIO_TypeDef* GPIOx, unsigned long LEDPinNumber){
 }
 
 void vUsartStartTx(void){
+    USART1->CR1 |= USART_CR1_TE;
     USART1->CR1 |= USART_CR1_TXEIE;
 }
 
 void vUsartStopTx(void){
+    USART1->CR1 &= ~USART_CR1_TE;
     USART1->CR1 &= ~USART_CR1_TXEIE;
 }
 

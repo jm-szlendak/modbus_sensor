@@ -13,6 +13,7 @@
 extern TaskHandle_t xSensorTaskHandle;  /**< Task handle */
 extern SemaphoreHandle_t xDataReadySemaphore;
 extern float board_status[NUMBER_OF_FIELDS];
+
 /**
   * \brief  Starts Sensor and Control task
   * \param  uxPriority: Priority of task

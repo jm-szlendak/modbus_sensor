@@ -1,34 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <EmBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="SPL\inc\stm32f30x_gpio.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="SPL\inc\stm32f30x_gpio.h" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="5084" topLine="133" />
 		</Cursor>
 	</File>
-	<File name="SPL\inc\stm32f30x_i2c.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="SPL\inc\stm32f30x_i2c.h" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="3919" topLine="91" />
 		</Cursor>
 	</File>
-	<File name="SPL\inc\stm32f30x_rcc.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="SPL\inc\stm32f30x_rcc.h" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="26395" topLine="579" />
+			<Cursor1 position="26395" topLine="569" />
 		</Cursor>
 	</File>
-	<File name="SPL\src\stm32f30x_i2c.c" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="SPL\inc\stm32f30x_spi.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3261" topLine="54" />
+		</Cursor>
+	</File>
+	<File name="SPL\src\stm32f30x_i2c.c" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="52119" topLine="1441" />
 		</Cursor>
 	</File>
-	<File name="inc\hardware.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="inc\RTOS\task.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1564" topLine="10" />
+			<Cursor1 position="49680" topLine="1295" />
 		</Cursor>
 	</File>
-	<File name="inc\protocol.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="inc\hardware.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="831" topLine="0" />
+			<Cursor1 position="1130" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="inc\imu.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1665" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="inc\protocol.h" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="341" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="inc\sensorTask.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -36,7 +51,7 @@
 			<Cursor1 position="173" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="inc\stm32f30x.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="inc\stm32f30x.h" open="1" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="33" />
 		</Cursor>
@@ -46,24 +61,24 @@
 			<Cursor1 position="1441" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="inc\stm32f3_discovery_l3gd20.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="inc\stm32f3_discovery_l3gd20.h" open="1" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="100" topLine="0" />
+			<Cursor1 position="4657" topLine="90" />
 		</Cursor>
 	</File>
-	<File name="inc\stm32f3_discovery_lsm303dlhc.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="inc\stm32f3_discovery_lsm303dlhc.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4465" topLine="150" />
+			<Cursor1 position="22340" topLine="489" />
 		</Cursor>
 	</File>
-	<File name="inc\usartRxTask.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="inc\usartRxTask.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="173" topLine="0" />
+			<Cursor1 position="355" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="inc\usartTxTask.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="inc\usartTxTask.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="232" topLine="0" />
+			<Cursor1 position="185" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\RTOS\queue.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -71,40 +86,46 @@
 			<Cursor1 position="35487" topLine="1020" />
 		</Cursor>
 	</File>
-	<File name="src\RTOS\tasks.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\RTOS\tasks.c" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="88913" topLine="2555" />
+			<Cursor1 position="34270" topLine="794" />
 		</Cursor>
 	</File>
-	<File name="src\hardware.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\hardware.c" open="1" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2841" topLine="0" />
+			<Cursor1 position="1754" topLine="56" />
 		</Cursor>
 		<Folding>
-			<Collapse line="11" />
 			<Collapse line="66" />
-			<Collapse line="70" />
-			<Collapse line="74" />
 		</Folding>
 	</File>
-	<File name="src\imu.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\imu.c" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="7667" topLine="87" />
+			<Cursor1 position="13692" topLine="62" />
 		</Cursor>
+		<Folding>
+			<Collapse line="6" />
+			<Collapse line="50" />
+			<Collapse line="168" />
+			<Collapse line="276" />
+			<Collapse line="310" />
+			<Collapse line="343" />
+			<Collapse line="383" />
+		</Folding>
 	</File>
 	<File name="src\ledTask.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="441" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\main.c" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\main.c" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2305" topLine="48" />
+			<Cursor1 position="1305" topLine="36" />
 		</Cursor>
 	</File>
-	<File name="src\sensorTask.c" open="1" top="1" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\sensorTask.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2208" topLine="27" />
+			<Cursor1 position="1343" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\startup_stm32f30x.S" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -112,29 +133,55 @@
 			<Cursor1 position="3768" topLine="131" />
 		</Cursor>
 	</File>
-	<File name="src\stm32f30x_it.c" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\stm32f30x_it.c" open="1" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4775" topLine="150" />
+			<Cursor1 position="4832" topLine="131" />
 		</Cursor>
 	</File>
-	<File name="src\stm32f3_discovery_lsm303dlhc.c" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\stm32f3_discovery_l3gd20.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2563" topLine="79" />
+			<Cursor1 position="13442" topLine="350" />
 		</Cursor>
+		<Folding>
+			<Collapse line="347" />
+		</Folding>
+	</File>
+	<File name="src\stm32f3_discovery_lsm303dlhc.c" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="12763" topLine="209" />
+		</Cursor>
+		<Folding>
+			<Collapse line="94" />
+			<Collapse line="120" />
+			<Collapse line="140" />
+			<Collapse line="167" />
+			<Collapse line="190" />
+			<Collapse line="219" />
+			<Collapse line="256" />
+			<Collapse line="286" />
+			<Collapse line="314" />
+			<Collapse line="342" />
+			<Collapse line="368" />
+			<Collapse line="415" />
+			<Collapse line="432" />
+			<Collapse line="495" />
+			<Collapse line="568" />
+			<Collapse line="658" />
+		</Folding>
 	</File>
 	<File name="src\system_stm32f30x.c" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="13014" topLine="307" />
 		</Cursor>
 	</File>
-	<File name="src\usartRxTask.c" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\usartRxTask.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="871" topLine="0" />
+			<Cursor1 position="831" topLine="12" />
 		</Cursor>
 	</File>
 	<File name="src\usartTxTask.c" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1738" topLine="4" />
+			<Cursor1 position="194" topLine="0" />
 		</Cursor>
 	</File>
 </EmBlocks_layout_file>
