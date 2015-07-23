@@ -1,5 +1,6 @@
 #include "sensorTask.h"
 #include "stdio.h"
+#include "task.h"
 
 #define sensorSTACK_SIZE (configMINIMAL_STACK_SIZE + 2UL )
 #define sensorQUEUE_SIZE 20UL
@@ -24,12 +25,12 @@ void vSensorTask(void* pvParameters)
         if(xSemaphoreTake(xDataReadySemaphore,sensorSAMPLE_PERIOD/portTICK_PERIOD_MS) == pdTRUE)
         {
             /// Enter critical reqion to avoid preemption during IMU read
-            taskENTER_CRITICAL();
+            vTaskSuspendAll();
             imuReadAcceleration(&(board_status[ACCELERATION_X]));
             imuReadMagneticField(&(board_status[MAGNETIC_FIELD_X]));
             imuReadMagneticField(&(board_status[GYRO_ANG_RATE_X]));
             /// Exit critical reqion. Now preemption is allowed.
-            taskEXIT_CRITICAL();
+            xTaskResumeAll();
             /// Give mutex back so other task can obtain him
             xSemaphoreGive(xDataReadySemaphore);
         }

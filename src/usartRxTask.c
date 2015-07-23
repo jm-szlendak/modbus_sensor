@@ -1,5 +1,5 @@
 #include "usartRxTask.h"
-
+#include "task.h"
 #define usartRxSTACK_SIZE (configMINIMAL_STACK_SIZE + 2UL )
 #define usartRxMAX_DATA_WAIT (100)
 #define usartRxNO_WAIT 0UL
@@ -45,19 +45,16 @@ void vUsartRxTask(void* pvParameters){
             case MODBUS_FUNCTION_READ_FLOAT:
             {
                 /// Try to obtain mutex. Don't wait forever.
-                if(xSemaphoreTake(xDataReadySemaphore, usartRxMAX_DATA_WAIT/portTICK_PERIOD_MS) == pdTRUE)
+                //if(xSemaphoreTake(xDataReadySemaphore, usartRxMAX_DATA_WAIT/portTICK_PERIOD_MS) == pdTRUE)
                 {
                     char index = xFrame.frame[MB_INDX_DATA];
                     /// Prepare command response
                     setResponse(index);
 
                     /// Give mutex back
-                    xSemaphoreGive(xDataReadySemaphore);
+                   // xSemaphoreGive(xDataReadySemaphore);
                 }
-                else
-                {
-                    /**< TODO: deal with it */
-                }
+
 
 
             } break;
@@ -66,6 +63,7 @@ void vUsartRxTask(void* pvParameters){
                 setResponse(xFrame.frame[MB_INDX_DATA]);
             } break;
         }
+        //vTaskDelay(50/portTICK_PERIOD_MS);
         vUsartStartTx();
         //TODO start TX here
 

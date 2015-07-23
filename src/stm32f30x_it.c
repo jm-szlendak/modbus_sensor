@@ -164,7 +164,10 @@ void USART1_IRQHandler(void){
 	if(USART1->ISR & USART_FLAG_RXNE)
     {
 
-        xFrame.frame[xFrame.size++]=USART1->RDR;
+        char byte = USART1->RDR;
+        if(xFrame.size>protocolMAX_FRAME_SIZE)
+            xFrame.size = 0;
+        xFrame.frame[xFrame.size++]=byte;
 	}
 
 	if(USART1->ISR & USART_FLAG_TXE)
@@ -175,6 +178,7 @@ void USART1_IRQHandler(void){
         {
             vUsartStopTx();
             index = 0;
+            memset(&xFrame, 0, sizeof(xFrame));
         }
         else
         {

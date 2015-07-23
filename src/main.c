@@ -60,8 +60,8 @@ int main(int argc, char* argv[])
 	vhHardwareSetup();
 
 	vStartLEDBlinkTask(mainBLINK_TASK_PRIORITY);
-	vStartButtonTask(mainBUTTON_TASK_PRIORITY);
-	vStartSystemLEDTask(mainSYSTEMLED_TASK_PRIORITY);
+	//vStartButtonTask(mainBUTTON_TASK_PRIORITY);
+	//vStartSystemLEDTask(mainSYSTEMLED_TASK_PRIORITY);
 	vStartSensorTask(mainSENSOR_TASK_PRIORITY);
 	vStartUsartRxTask(mainUSARTRX_TASK_PRIORITY);
 	vTaskStartScheduler();
