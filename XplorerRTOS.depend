@@ -894,7 +894,7 @@
 	"task.h"
 	"hardware.h"
 
-1437690230 source:e:\workspace\stm32\modbussensor\src\main.c
+1437769645 source:e:\workspace\stm32\modbussensor\src\main.c
 	<stdio.h>
 	"FreeRTOS.h"
 	"task.h"
@@ -935,9 +935,10 @@
 	"stm32f3_discovery_l3gd20.h"
 	"stm32f3_discovery_lsm303dlhc.h"
 
-1437690792 source:e:\workspace\stm32\modbussensor\src\sensortask.c
+1437953259 source:e:\workspace\stm32\modbussensor\src\sensortask.c
 	"sensorTask.h"
 	"stdio.h"
+	"task.h"
 
 1423412361 source:e:\workspace\stm32\modbussensor\src\startup_stm32f30x.s
 

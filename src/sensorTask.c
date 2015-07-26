@@ -5,7 +5,7 @@
 #define sensorSTACK_SIZE (configMINIMAL_STACK_SIZE + 2UL )
 #define sensorQUEUE_SIZE 20UL
 #define sensorNO_WAIT 0UL
-#define sensorSAMPLE_PERIOD 100UL
+#define sensorSAMPLE_PERIOD 50UL
 
 void vStartSensorTask( UBaseType_t uxPriority)
 {
@@ -28,7 +28,7 @@ void vSensorTask(void* pvParameters)
             vTaskSuspendAll();
             imuReadAcceleration(&(board_status[ACCELERATION_X]));
             imuReadMagneticField(&(board_status[MAGNETIC_FIELD_X]));
-            imuReadMagneticField(&(board_status[GYRO_ANG_RATE_X]));
+            imuReadAngularRate(&(board_status[GYRO_ANG_RATE_X]));
             /// Exit critical reqion. Now preemption is allowed.
             xTaskResumeAll();
             /// Give mutex back so other task can obtain him
