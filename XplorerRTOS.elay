@@ -43,7 +43,7 @@
 	</File>
 	<File name="inc\imu.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1665" topLine="0" />
+			<Cursor1 position="356" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="inc\protocol.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -109,9 +109,9 @@
 			<Collapse line="67" />
 		</Folding>
 	</File>
-	<File name="src\imu.c" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\imu.c" open="1" top="1" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="13692" topLine="62" />
+			<Cursor1 position="16407" topLine="152" />
 		</Cursor>
 		<Folding>
 			<Collapse line="6" />
@@ -133,9 +133,9 @@
 			<Cursor1 position="1650" topLine="39" />
 		</Cursor>
 	</File>
-	<File name="src\sensorTask.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\sensorTask.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1379" topLine="0" />
+			<Cursor1 position="1094" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\startup_stm32f30x.S" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

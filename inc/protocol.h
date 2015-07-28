@@ -1,7 +1,7 @@
 #ifndef PROTOCOL_H_INCLUDED
 #define PROTOCOL_H_INCLUDED
 
-#define protocolMAX_FRAME_SIZE (20)
+#define protocolMAX_FRAME_SIZE (40)
 
 
 #define DEVICE_MODBUS_ADDRESS       (0x01)
@@ -14,6 +14,7 @@
 #define MB_INDX_DEV_ADDRESS            (0)
 #define MB_INDX_FUNCTION_CODE          (1)
 #define MB_INDX_DATA                   (2)
+#define MB_INDX_SIZE                   (3)
 
 typedef enum
 {

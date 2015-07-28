@@ -6,10 +6,10 @@
 
 volatile modbus_frame_t xFrame;
 
-static void setResponse(unsigned char index)
+static void setResponse(unsigned char index, unsigned char size)
 {
-    memcpy(&(xFrame.frame[MB_INDX_DATA]), &(board_status[index]), sizeof(float));
-    xFrame.size = sizeof(float) + 2;
+    memcpy(&(xFrame.frame[MB_INDX_DATA]), &(board_status[index]), size * sizeof(float));
+    xFrame.size = size * sizeof(float) + 2;
 }
 void vStartUsartRxTask( UBaseType_t uxPriority)
 {
@@ -45,14 +45,15 @@ void vUsartRxTask(void* pvParameters){
             case MODBUS_FUNCTION_READ_FLOAT:
             {
                 /// Try to obtain mutex. Don't wait forever.
-                //if(xSemaphoreTake(xDataReadySemaphore, usartRxMAX_DATA_WAIT/portTICK_PERIOD_MS) == pdTRUE)
+                if(xSemaphoreTake(xDataReadySemaphore, usartRxMAX_DATA_WAIT/portTICK_PERIOD_MS) == pdTRUE)
                 {
                     char index = xFrame.frame[MB_INDX_DATA];
+                    char size = xFrame.frame[MB_INDX_SIZE];
                     /// Prepare command response
-                    setResponse(index);
+                    setResponse(index, size);
 
                     /// Give mutex back
-                   // xSemaphoreGive(xDataReadySemaphore);
+                   xSemaphoreGive(xDataReadySemaphore);
                 }
 
 
@@ -60,10 +61,9 @@ void vUsartRxTask(void* pvParameters){
             } break;
             case MODBUS_FUNCTION_READ_REGISTER:
             {
-                setResponse(xFrame.frame[MB_INDX_DATA]);
             } break;
         }
-        //vTaskDelay(50/portTICK_PERIOD_MS);
+        vTaskDelay(5/portTICK_PERIOD_MS);
         vUsartStartTx();
         //TODO start TX here
 
