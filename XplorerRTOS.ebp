@@ -190,6 +190,7 @@
 		<Unit filename="inc\imu.h">
 			<Option target="Debug" />
 		</Unit>
+		<Unit filename="inc\kalman.h" />
 		<Unit filename="inc\ledTask.h" />
 		<Unit filename="inc\protocol.h" />
 		<Unit filename="inc\sensorTask.h" />
@@ -247,6 +248,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src\imu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src\kalman.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src\ledTask.c">

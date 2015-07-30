@@ -36,9 +36,8 @@ extern SemaphoreHandle_t xButtonSemaphore;
 extern SemaphoreHandle_t xFrameReceivedSemaphore;
 
 
-extern QueueHandle_t xUsartTxBuffer;
-extern QueueHandle_t xUsartRxBuffer;
 extern volatile modbus_frame_t xFrame;
+extern float board_status[NUMBER_OF_FIELDS];
 
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
@@ -152,11 +151,23 @@ __attribute__((weak)) void SysTick_Handler(void)
   */
 void EXTI0_IRQHandler(void)
 {
-	long lHigherPriorityTaskWoken = pdFALSE;
-	EXTI_ClearITPendingBit(USER_BUTTON_EXTI_LINE);
-	xSemaphoreGiveFromISR(xButtonSemaphore,&lHigherPriorityTaskWoken);
-	portEND_SWITCHING_ISR(lHigherPriorityTaskWoken);
 
+    /// Interrupt on button are sourced by both edges. Here we determine the edge
+    static uint32_t button_state = 0;
+    /// If state on button pin is HIGH we've got interrupt on RISING edge
+    if(GPIOA->IDR & GPIO_IDR_0)
+    {
+         button_state |= 1<<0;
+         LED_GPIO->ODR |= (1<<LED4_NUMBER);
+    }
+    else
+    {
+        button_state &= ~(1<<0);
+        LED_GPIO->ODR &= ~(1<<LED4_NUMBER);
+    }
+
+    memcpy(&(board_status[BUTTON_STATE]), &button_state, sizeof(button_state));
+    EXTI_ClearITPendingBit(USER_BUTTON_EXTI_LINE);
 }
 
 void USART1_IRQHandler(void){

@@ -881,7 +881,7 @@
 1418921767 source:e:\workspace\stm32\modbussensor\src\delay.c
 	"delay.h"
 
-1437347762 source:e:\workspace\stm32\modbussensor\src\hardware.c
+1438280710 source:e:\workspace\stm32\modbussensor\src\hardware.c
 	"hardware.h"
 	"stm32f30x_usart.h"
 	"imu.h"
@@ -894,7 +894,7 @@
 	"task.h"
 	"hardware.h"
 
-1437769645 source:e:\workspace\stm32\modbussensor\src\main.c
+1438279937 source:e:\workspace\stm32\modbussensor\src\main.c
 	<stdio.h>
 	"FreeRTOS.h"
 	"task.h"
@@ -907,8 +907,9 @@
 	"systemLedTask.h"
 	"usartTxTask.h"
 	"sensorTask.h"
+	"arm_math.h"
 
-1438109893 e:\workspace\stm32\modbussensor\inc\protocol.h
+1438279328 e:\workspace\stm32\modbussensor\inc\protocol.h
 
 1421266048 e:\workspace\stm32\modbussensor\inc\systemledtask.h
 	"FreeRTOS.h"
@@ -942,7 +943,7 @@
 
 1423412361 source:e:\workspace\stm32\modbussensor\src\startup_stm32f30x.s
 
-1437690230 source:e:\workspace\stm32\modbussensor\src\stm32f30x_it.c
+1438280391 source:e:\workspace\stm32\modbussensor\src\stm32f30x_it.c
 	"stm32f30x_it.h"
 
 1425207849 e:\workspace\stm32\modbussensor\inc\stm32f30x_it.h
@@ -974,7 +975,7 @@
 1434658633 source:e:\workspace\stm32\modbussensor\src\usarttxtask.c
 	"usartTxTask.h"
 
-1438106695 source:e:\workspace\stm32\modbussensor\src\usartrxtask.c
+1438112096 source:e:\workspace\stm32\modbussensor\src\usartrxtask.c
 	"usartRxTask.h"
 	"task.h"
 
@@ -996,4 +997,187 @@
 
 1436299948 source:e:\workspace\stm32\modbussensor\src\imu.c
 	"imu.h"
+
+1348675155 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_abs_f32.c
+	"arm_math.h"
+	<math.h>
+
+1438121698 e:\workspace\stm32\modbussensor\cmsis\arm_math.h
+	"core_cm4.h"
+	"core_cm3.h"
+	"core_cm0.h"
+	"core_cm4.h"
+	"string.h"
+	"math.h"
+
+1348675155 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_abs_q15.c
+	"arm_math.h"
+
+1348675155 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_abs_q31.c
+	"arm_math.h"
+
+1348675155 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_abs_q7.c
+	"arm_math.h"
+
+1348675155 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_add_f32.c
+	"arm_math.h"
+
+1348675155 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_add_q15.c
+	"arm_math.h"
+
+1348675155 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_add_q31.c
+	"arm_math.h"
+
+1348675155 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_add_q7.c
+	"arm_math.h"
+
+1348675155 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_dot_prod_f32.c
+	"arm_math.h"
+
+1348675155 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_dot_prod_q15.c
+	"arm_math.h"
+
+1348675155 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_dot_prod_q31.c
+	"arm_math.h"
+
+1348675155 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_dot_prod_q7.c
+	"arm_math.h"
+
+1348675162 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_add_f32.c
+	"arm_math.h"
+
+1348675162 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_add_q15.c
+	"arm_math.h"
+
+1348675162 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_add_q31.c
+	"arm_math.h"
+
+1348675162 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_init_f32.c
+	"arm_math.h"
+
+1348675162 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_init_q15.c
+	"arm_math.h"
+
+1348675162 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_init_q31.c
+	"arm_math.h"
+
+1348675162 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_inverse_f32.c
+	"arm_math.h"
+
+1348675162 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_mult_f32.c
+	"arm_math.h"
+
+1348675163 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_mult_fast_q15.c
+	"arm_math.h"
+
+1348675163 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_mult_fast_q31.c
+	"arm_math.h"
+
+1348675163 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_mult_q15.c
+	"arm_math.h"
+
+1348675163 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_mult_q31.c
+	"arm_math.h"
+
+1348675163 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_scale_f32.c
+	"arm_math.h"
+
+1348675163 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_scale_q15.c
+	"arm_math.h"
+
+1348675163 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_scale_q31.c
+	"arm_math.h"
+
+1348675163 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_sub_f32.c
+	"arm_math.h"
+
+1348675163 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_sub_q15.c
+	"arm_math.h"
+
+1348675163 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_sub_q31.c
+	"arm_math.h"
+
+1348675163 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_trans_f32.c
+	"arm_math.h"
+
+1348675163 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_trans_q15.c
+	"arm_math.h"
+
+1348675163 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mat_trans_q31.c
+	"arm_math.h"
+
+1348675155 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mult_f32.c
+	"arm_math.h"
+
+1348675155 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mult_q15.c
+	"arm_math.h"
+
+1348675155 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mult_q31.c
+	"arm_math.h"
+
+1348675155 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_mult_q7.c
+	"arm_math.h"
+
+1348675155 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_negate_f32.c
+	"arm_math.h"
+
+1348675155 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_negate_q15.c
+	"arm_math.h"
+
+1348675156 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_negate_q31.c
+	"arm_math.h"
+
+1348675156 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_negate_q7.c
+	"arm_math.h"
+
+1348675156 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_offset_f32.c
+	"arm_math.h"
+
+1348675156 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_offset_q15.c
+	"arm_math.h"
+
+1348675156 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_offset_q31.c
+	"arm_math.h"
+
+1348675156 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_offset_q7.c
+	"arm_math.h"
+
+1348675156 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_scale_f32.c
+	"arm_math.h"
+
+1348675156 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_scale_q15.c
+	"arm_math.h"
+
+1348675156 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_scale_q31.c
+	"arm_math.h"
+
+1348675156 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_scale_q7.c
+	"arm_math.h"
+
+1348675156 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_shift_q15.c
+	"arm_math.h"
+
+1348675156 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_shift_q31.c
+	"arm_math.h"
+
+1348675156 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_shift_q7.c
+	"arm_math.h"
+
+1348675156 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_sub_f32.c
+	"arm_math.h"
+
+1348675156 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_sub_q15.c
+	"arm_math.h"
+
+1348675156 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_sub_q31.c
+	"arm_math.h"
+
+1348675156 source:e:\workspace\stm32\modbussensor\src\cmsis_math\arm_sub_q7.c
+	"arm_math.h"
+
+1438122230 source:e:\workspace\stm32\modbussensor\src\kalman.c
+	"kalman.h"
+	"arm_math.h"
+
+1438122232 e:\workspace\stm32\modbussensor\inc\kalman.h
 

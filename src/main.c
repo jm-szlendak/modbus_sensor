@@ -23,6 +23,7 @@
 #include "usartTxTask.h"
 #include "sensorTask.h"
 
+
 /**TASK PRIORITIES**/
 #define mainBLINK_TASK_PRIORITY		( tskIDLE_PRIORITY + 1UL )
 #define mainBUTTON_TASK_PRIORITY	( tskIDLE_PRIORITY )
@@ -60,7 +61,7 @@ int main(int argc, char* argv[])
 	vhHardwareSetup();
 
 	vStartLEDBlinkTask(mainBLINK_TASK_PRIORITY);
-	vStartButtonTask(mainBUTTON_TASK_PRIORITY);
+	//vStartButtonTask(mainBUTTON_TASK_PRIORITY);
 	vStartSystemLEDTask(mainSYSTEMLED_TASK_PRIORITY);
 	vStartSensorTask(mainSENSOR_TASK_PRIORITY);
 	vStartUsartRxTask(mainUSARTRX_TASK_PRIORITY);
